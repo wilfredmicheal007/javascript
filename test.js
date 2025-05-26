@@ -111,8 +111,8 @@ const data = [
     title: "A Game of Thrones",
     publicationDate: "1996-08-01",
     author: "George R. R. Martin",
-    genres: ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
     hasMovieAdaptation: true,
+    genres: ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
     pages: 835,
     translations: {
     korean: "왕좌의 게임",
@@ -142,12 +142,15 @@ function getBooks() {
 function getBook(id) {
     return data.find((d) => d.id === id);
 }
+console.log(getBook(1));
 
 
 // destructuring
 
 const book = getBook(2);
 book;
+
+console.log("Book", book)
 
 
 // const title = book.title;
@@ -162,9 +165,9 @@ book;
 // const genres = book.genres;
 // genres;
 
-const { author, title, publicationDate, genres, pages, hasmMovieAdaptation } = book;
+const { author, title, publicationDate, genres, pages, hasMovieAdaptation } = book;
 
-console.log(author, title, publicationDate, pages, genres)
+console.log(author, title, publicationDate, pages, genres, hasMovieAdaptation)
 
 // const primaryGenre = genres[0];
 // const secondaryGenre = genre[1];
@@ -185,12 +188,60 @@ const updatedBook = { ...book,
 };
 updatedBook;
 
-const summary =` ${title} is a book sold for ${4+6}$ that contains ${pages}-pages and was written by ${author} and published in ${publicationDate.split("-")[0]}`;
+console.log("updatebook", updatedBook)
+
+const getYear = (str) => str.split('-')[0];
+console. log (getYear(publicationDate))
+
+const summary =` ${title} is
+const getYear = (str) => str.split('-')[0];
+
+console. log (getYear(publicationDate)) a book sold for ${4+6}$ thaconsole.log(true && "some string")t contains ${pages}-pages and was written by ${author} and published in ${getYear (publicationDate)}`;
 summary;
 
 
 const pagesRange = pages > 1000 ? "a thousand pages plus" : "less than a thousand pages";
 pagesRange;
 
-const publicationDateRange = publicationDate < 2000 ? "21st century" :"20th century";
-publicationDateRange
+//writining a function to get the publicationDate 
+// fufunctionnction getYaear(string) {
+//     return str.split('-')[0];
+// }
+//end of 
+
+console.log(true && "some string");
+console.log(false && "some string");
+console.log(hasMovieAdaptation && "this book has a movie");
+
+console.log(true || "some value")
+console.log(false || "some value")
+
+console.log(book.translations.spanish)
+const spanishTranslation = book.translations.spanish || 'NO TRANSLATIONS'
+spanishTranslation;
+
+console.log(book.genres)
+const bookGenres = book.genres || 'NO GENRES'
+bookGenres;
+
+console.log(book.title)
+const bookTitle = book.title || 'NO TITLE'
+bookTitle;
+
+console.log(book.reviews.librarything.reviewsCount)
+const countWrong = book.reviews.librarything.reviewsCount || 'NO DATA'
+countWrong;
+
+const count = book.reviews.librarything.reviewsCount ?? 'no data'
+count;
+
+function getTotalReviewCount(book){
+    const goodReads = book.reviews.goodreads.reviewsCount;
+    const librarything = book.reviews.librarything.reviewsCount;
+    return goodReads + librarything
+}
+console.log(getTotalReviewCount(book))
+
+
+//testing exercise
+
